@@ -1,21 +1,25 @@
 const checkbox = document.querySelector("input[type=checkbox]");
-const link = document.getElementById("theme-style");
-let theme = localStorage.getItem("theme");
-
-if (theme === null) {
-  localStorage.setItem("theme", false);
-  checkbox.checked = false;
-} else if (theme === true) {
-  checkbox.checked = theme;
-  console.log("CHECKED");
-}
 
 checkbox.addEventListener("change", (e) => {
-  if (e.target.checked || theme == true) {
-    link.href = "dark.css";
-    localStorage.setItem("theme", true);
+  if (e.target.checked) {
+    document.getElementById("theme-style").href = "dark.css";
+    localStorage.setItem("theme", "true");
   } else {
-    link.href = "";
-    localStorage.setItem("theme", false);
+    document.getElementById("theme-style").href = "";
+    localStorage.setItem("theme", "false");
   }
 });
+
+window.onload = function () {
+  if (localStorage.getItem("theme") == null) {
+    checkbox.checked = false;
+    document.getElementById("theme-style").href = "";
+  } else if (localStorage.getItem("theme") == "true") {
+    console.log("true");
+    checkbox.checked = true;
+    document.getElementById("theme-style").href = "dark.css";
+  } else if (localStorage.getItem("theme") == "false") {
+    checkbox.checked = false;
+    document.getElementById("theme-style").href = "";
+  }
+};
