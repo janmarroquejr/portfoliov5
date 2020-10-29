@@ -7,6 +7,7 @@
   --previewBg: rgba(23, 162, 184, 0.2);
   --previewShadow: #f0ead6;
   --btnColor: black;
+  --btnText: white;
 }
 
 html,
@@ -325,7 +326,7 @@ input:checked[type="checkbox"]:before {
   width: 100%;
   padding-top: 10px;
   padding-bottom: 10px;
-  color: #fff;
+  color: var(--btnText);
   background-color: var(--btnColor);
   border: none;
 }
